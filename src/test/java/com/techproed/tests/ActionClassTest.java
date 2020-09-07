@@ -5,6 +5,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+
+import javax.swing.*;
+
 public class ActionClassTest extends TestBase {
     @Test
     public void sagTiklama(){
@@ -51,4 +54,31 @@ public class ActionClassTest extends TestBase {
         }
         actions.sendKeys(Keys.PAGE_UP).perform();
     }
-}
+    @Test
+    public void buyukKucukYazma(){
+        //MERHABA nasilsiniz LIVE channel
+        driver.get("http://google.com");
+        //name="q"
+        WebElement aramaKutusu = driver.findElement(By.name("q"));
+        //standart yazma methodumuz kücük
+       // aramaKutusu.sendKeys("Merhaba nasilsiniz live channel");
+
+        //Her karakteri büyük yapar.
+      //  aramaKutusu.sendKeys(Keys.SHIFT+"Yasemin EMEC");
+        Actions actions = new Actions(driver);
+        actions.moveToElement(aramaKutusu).click()
+                .keyUp(Keys.SHIFT)
+                .sendKeys("Seni cok ")
+                .keyDown(Keys.SHIFT)
+                .sendKeys("seviyorum")
+                .perform();
+
+    }
+    @Test
+    public void dragAndDrop(){
+    driver.get("http://google.com");
+    WebElement aramaKutusu = driver.findElement(By.name("q"));
+        WebElement logo = driver.findElement(By.id("hplogo"));
+    Actions actions = new Actions(driver);
+    actions.dragAndDrop(logo,aramaKutusu).perform();
+}}
