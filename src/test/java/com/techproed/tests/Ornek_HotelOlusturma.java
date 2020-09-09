@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 public class Ornek_HotelOlusturma extends TestBase {
     @BeforeMethod
     public void giris(){
@@ -30,11 +31,12 @@ public class Ornek_HotelOlusturma extends TestBase {
         adresKutusu.sendKeys("Müller St. 10/20");
         phoneKutusu.sendKeys("015266074163");
         emailKutusu.sendKeys("arya@dunyam.com");
+
         Select select = new Select(idGrup);
         select.selectByIndex(2);
         saveButonu.click();
         // WebElement basariliYazisi = driver.findElement(By.className("bootbox-body"));
-        WebDriverWait wait = new WebDriverWait(driver, 50);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         WebElement basariliYazisi = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("bootbox-body")));
         Assert.assertTrue(basariliYazisi.isDisplayed());
     }
